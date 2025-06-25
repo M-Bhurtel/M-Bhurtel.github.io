@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohani Lal Bhurtel | Data Analyst Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --dark-navy: #0A192F;
+            --light-navy: #112240;
+            --light-slate: #CCD6F6;
+            --slate: #8892B0;
+            --accent-green: #64FFDA;
+            --gradient-start: #38bdf8; /* sky-500 */
+            --gradient-end: #818cf8; /* indigo-400 */
+        }
+        html {
+            scroll-padding-top: 80px;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-navy);
+            color: var(--slate);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--dark-navy); }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+        .text-gradient {
+            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .section-title {
+            @apply text-3xl font-bold mb-4 text-slate-100 relative inline-block pb-2;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+            border-radius: 2px;
+        }
+        .nav-link {
+            @apply text-slate-300 hover:text-sky-400 transition-colors duration-300;
+        }
+        /* Scroll animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="bg-slate-900/80 backdrop-blur-lg sticky top-0 z-50 shadow-lg shadow-black/20">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-lg font-extrabold text-white tracking-widest">
+                MOHANI<span class="text-sky-400">.</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#skills" class="nav-link">Skills</a>
+            </div>
+            <a href="#contact" class="hidden md:block bg-sky-500 text-white font-semibold py-2 px-5 rounded-lg hover:bg-sky-600 transition-colors">Contact Me</a>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#about" class="block py-2 px-6 text-sm text-slate-300 hover:bg-slate-800">About</a>
+            <a href="#projects" class="block py-2 px-6 text-sm text-slate-300 hover:bg-slate-800">Projects</a>
+            <a href="#experience" class="block py-2 px-6 text-sm text-slate-300 hover:bg-slate-800">Experience</a>
+            <a href="#skills" class="block py-2 px-6 text-sm text-slate-300 hover:bg-slate-800">Skills</a>
+            <a href="#contact" class="block py-2 px-6 text-sm text-slate-300 hover:bg-slate-800">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6">
+
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex items-center">
+            <div class="reveal">
+                <p class="text-sky-400 mb-4 text-lg">Hi, my name is</p>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-slate-100 mb-4">Mohani Lal Bhurtel.</h1>
+                <h2 class="text-4xl md:text-6xl font-extrabold text-slate-400 mb-8">I turn data into insights.</h2>
+                <p class="max-w-xl text-lg text-slate-400 mb-8">
+                    I'm a Junior Data Analyst specializing in e-commerce and marketing analytics. I leverage SQL, Python, and Power BI to build dashboards and deliver data-driven recommendations that guide business strategy.
+                </p>
+                <div class="flex items-center space-x-4">
+                    <a href="Mohani Lal Data Resume.pdf" target="_blank" class="bg-transparent border-2 border-sky-400 text-sky-400 font-semibold py-3 px-8 rounded-lg hover:bg-sky-400/10 transition-colors">
+                        Download Resume
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-12 items-start">
+                <div class="md:col-span-2 reveal">
+                    <h2 class="section-title">About Me</h2>
+                </div>
+                <div class="md:col-span-3 space-y-6 text-lg text-slate-400 reveal">
+                    <p>I am passionate about the entire data lifecycle, from cleaning and modeling complex datasets to visualizing key performance indicators and presenting my findings to stakeholders. My goal is to help companies make smarter, data-driven decisions that drive growth.</p>
+                    <p>My internship experience in an IT consulting environment honed my ability to manage projects, gather business requirements, and collaborate effectively with both technical and business teams. This, combined with my project work in sales and marketing analytics, has prepared me to deliver tangible value from day one.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-24">
+            <div class="reveal mb-12">
+                <h2 class="section-title">Featured Projects</h2>
+            </div>
+            <div class="space-y-16">
+                <!-- Project 1 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center reveal">
+                    <div class="bg-slate-800/50 p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold text-white mb-2">Executive Sales & Customer Dashboard</h3>
+                        <p class="text-slate-400 mb-6">Engineered an end-to-end sales dashboard using SQL and Power BI to provide insights into sales performance and customer demographics.</p>
+                        <p class="text-sky-400 font-semibold mb-2">Key Outcome:</p>
+                        <p class="text-slate-300">Identified that the 56-70 age group and Professionals were responsible for over 75% of total revenue.</p>
+                        <div class="flex items-center space-x-4 mt-6">
+                            <span class="text-xs text-slate-400">SQL</span>
+                            <span class="text-xs text-slate-400">Power BI</span>
+                            <span class="text-xs text-slate-400">ETL</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/M-Bhurtel/Wonderland-Sales-Analaytics" target="_blank" class="block group">
+                        <div class="rounded-xl overflow-hidden shadow-lg shadow-black/30">
+                            <img src="images/Exec Summary.jpg" alt="Executive Sales Dashboard for Wonderland" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                    </a>
+                </div>
+                 <!-- Project 2 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center reveal">
+                     <a href="https://github.com/M-Bhurtel" target="_blank" class="block group md:order-2">
+                        <div class="rounded-xl overflow-hidden shadow-lg shadow-black/30">
+                            <img src="images/Dashboard_Marketing.jpg" alt="Marketing Campaign Dashboard" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                    </a>
+                    <div class="bg-slate-800/50 p-8 rounded-xl md:order-1 text-right">
+                        <h3 class="text-2xl font-bold text-white mb-2">Marketing Campaign Dashboard</h3>
+                        <p class="text-slate-400 mb-6">Built an interactive Excel dashboard to track marketing KPIs (ROAS, CPA) and optimize media spend across various platforms.</p>
+                         <p class="font-semibold text-sky-400 mb-2">Key Outcome:</p>
+                        <p class="text-slate-300">Pinpointed a high-performing campaign with a 15.00 ROAS, leading to a recommendation to reallocate budget for improved ROI.</p>
+                        <div class="flex items-center justify-end space-x-4 mt-6">
+                            <span class="text-xs text-slate-400">Excel</span>
+                            <span class="text-xs text-slate-400">Power Query</span>
+                            <span class="text-xs text-slate-400">PivotTables</span>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Project 3 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center reveal">
+                    <div class="bg-slate-800/50 p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold text-white mb-2">Global Superstore EDA</h3>
+                        <p class="text-slate-400 mb-6">Performed an in-depth Exploratory Data Analysis on a $1.7M sales dataset using Python to identify profitability drivers.</p>
+                         <p class="font-semibold text-sky-400 mb-2">Key Outcome:</p>
+                        <p class="text-slate-300">Quantified a -0.51 correlation between discounts and profit, leading to a strategic proposal to cap discounts at 20%.</p>
+                        <div class="flex items-center space-x-4 mt-6">
+                            <span class="text-xs text-slate-400">Python</span>
+                            <span class="text-xs text-slate-400">Pandas</span>
+                             <span class="text-xs text-slate-400">Seaborn</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/M-Bhurtel/Global-Superstore-Sales-and-Profitability-Analysis" target="_blank" class="block group">
+                        <div class="rounded-xl overflow-hidden shadow-lg shadow-black/30">
+                            <img src="images/Profit vs Discount.jpg" alt="Profit Margin by Discount Analysis" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-24">
+             <div class="reveal mb-12">
+                 <h2 class="section-title">Experience</h2>
+            </div>
+            <div class="max-w-2xl mx-auto reveal">
+                <div class="border-l-2 border-slate-700 pl-8 relative">
+                    <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-sky-400 border-4 border-slate-900"></div>
+                    <h3 class="text-2xl font-bold text-white">Business Analyst Intern</h3>
+                    <p class="text-lg text-sky-400 mb-1">Zither IT Consulting</p>
+                    <p class="text-sm text-slate-500 mb-4">Dec 2023 – Apr 2024</p>
+                    <p class="text-slate-400">
+                        Enhanced system reliability by identifying and documenting bugs through comprehensive testing. Managed the bug lifecycle using Asana, improving project transparency for stakeholders. Also assisted senior analysts in gathering and documenting business requirements for IT projects.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section id="skills" class="py-24">
+             <div class="text-center reveal">
+                <h2 class="section-title">Technical Skills</h2>
+                <p class="text-lg text-slate-400 mb-12">A list of my key technical competencies.</p>
+            </div>
+            <div class="max-w-4xl mx-auto flex flex-wrap justify-center gap-4 text-center reveal">
+                <span class="bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg">Python</span>
+                <span class="bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg">Pandas & NumPy</span>
+                <span class="bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg">SQL</span>
+                <span class="bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg">Power BI</span>
+                <span class="bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg">Excel & Power Query</span>
+                <span class="bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg">Tableau</span>
+                <span class="bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg">Matplotlib & Seaborn</span>
+                <span class="bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg">Data Visualization</span>
+                <span class="bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg">ETL</span>
+                 <span class="bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg">Data Modeling</span>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-32 text-center">
+             <div class="reveal">
+                <h2 class="text-3xl text-slate-100 mb-4">What's Next?</h2>
+                <h3 class="text-5xl font-bold text-gradient mb-8">Get In Touch</h3>
+                <p class="max-w-xl mx-auto text-lg text-slate-400 mb-8">
+                    I'm currently open to new opportunities for a Data Analyst internship or junior-level role. My inbox is always open, whether you have a question or just want to say hi, I'll get back to you!
+                </p>
+                <a href="mailto:ashishbhurtel123@gmail.com" class="inline-block border-2 border-sky-400 text-sky-400 font-semibold py-3 px-8 rounded-lg hover:bg-sky-400/10 transition-colors text-lg">
+                    ashishbhurtel123@gmail.com
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer with Social Links -->
+    <footer class="py-8">
+        <div class="container mx-auto px-6 text-center text-slate-400">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://github.com/M-Bhurtel" target="_blank" class="text-2xl hover:text-white transition-colors">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/mohanibhurtel" target="_blank" class="text-2xl hover:text-white transition-colors">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                 <a href="mailto:ashishbhurtel123@gmail.com" class="text-2xl hover:text-white transition-colors">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            <p class="text-sm">&copy; 2025 Mohani Lal Bhurtel. Inspired by various modern portfolio designs.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JS for mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // JS for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
