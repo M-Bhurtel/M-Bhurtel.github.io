@@ -1,297 +1,621 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohani Lal Bhurtel | Data Analyst Portfolio</title>
+    <title>Mohani Lal Bhurtel | Data Analyst</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         :root {
-            --dark-navy: #0A192F;
-            --light-navy: #112240;
-            --light-slate: #CCD6F6;
-            --slate: #8892B0;
-            --accent-green: #64FFDA;
-            --gradient-start: #38bdf8; /* sky-500 */
-            --gradient-end: #818cf8; /* indigo-400 */
+            --bg:       #07111F;
+            --bg2:      #0C1A2E;
+            --border:   rgba(255,255,255,0.07);
+            --text:     #C8D6E8;
+            --muted:    #5A7090;
+            --white:    #EEF4FF;
+            --teal:     #00D4AA;
+            --teal-dim: rgba(0,212,170,0.10);
         }
-        html {
-            scroll-padding-top: 80px;
-        }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--dark-navy);
-            color: var(--slate);
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
         }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--dark-navy); }
-        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #334155; }
-        .text-gradient {
-            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .display       { font-family: 'Fraunces', serif; font-weight: 900; }
+        .display-light { font-family: 'Fraunces', serif; font-weight: 300; font-style: italic; }
+
+        /* NAV */
+        header { position: sticky; top: 0; z-index: 50; background: rgba(7,17,31,0.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+        nav { max-width: 1152px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Fraunces', serif; font-weight: 900; font-size: 1.2rem; color: var(--white); text-decoration: none; }
+        .logo span { color: var(--teal); }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--white); }
+        .nav-resume { background: var(--teal); color: #07111F; font-weight: 700; font-size: 0.85rem; padding: 10px 22px; border-radius: 7px; text-decoration: none; }
+        .nav-resume:hover { opacity: 0.85; }
+        #mob-btn { display: none; background: none; border: none; cursor: pointer; color: var(--white); }
+        #mob-menu { display: none; padding: 12px 24px 20px; border-top: 1px solid var(--border); }
+        #mob-menu a { display: block; padding: 10px 0; color: var(--muted); text-decoration: none; font-size: 0.9rem; border-bottom: 1px solid var(--border); }
+
+        /* LAYOUT */
+        .wrap { max-width: 1152px; margin: 0 auto; padding: 0 24px; }
+        .divider { height: 1px; background: var(--border); }
+        .eyebrow { display: block; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); font-weight: 600; margin-bottom: 12px; }
+        .section-title { font-family: 'Fraunces', serif; font-weight: 700; font-size: 2.4rem; color: var(--white); line-height: 1.15; }
+
+        /* BUTTONS */
+        .btn-p { display: inline-flex; align-items: center; gap: 8px; background: var(--teal); color: #07111F; font-weight: 700; font-size: 0.9rem; padding: 13px 30px; border-radius: 8px; text-decoration: none; }
+        .btn-p:hover { opacity: 0.85; }
+        .btn-o { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid var(--teal); color: var(--teal); font-weight: 600; font-size: 0.9rem; padding: 13px 30px; border-radius: 8px; text-decoration: none; }
+        .btn-o:hover { background: var(--teal-dim); }
+
+        /* STATS */
+        .stat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 28px 20px; text-align: center; }
+        .stat-num { font-family: 'Fraunces', serif; font-weight: 900; font-size: 2.6rem; color: var(--white); line-height: 1; display: inline; }
+        .stat-suf { font-family: 'Fraunces', serif; font-weight: 900; font-size: 2.6rem; color: var(--white); line-height: 1; }
+        .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 10px; display: block; }
+
+        /* TAGS */
+        .tag { display: inline-block; background: var(--teal-dim); color: var(--teal); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; padding: 3px 10px; border-radius: 20px; border: 1px solid rgba(0,212,170,0.2); }
+
+        /* PROJECT CARDS */
+        .proj-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: border-color 0.3s; }
+        .proj-card:hover { border-color: rgba(0,212,170,0.3); }
+        .proj-img-wrap { overflow: hidden; border-radius: 10px; border: 1px solid var(--border); }
+        .proj-img { width: 100%; height: 220px; object-fit: cover; display: block; transition: transform 0.4s; }
+        .proj-img-wrap:hover .proj-img { transform: scale(1.04); }
+
+        /* FINDING */
+        .finding { background: var(--teal-dim); border-left: 3px solid var(--teal); border-radius: 0 8px 8px 0; padding: 12px 16px; margin-bottom: 24px; }
+        .f-label { color: var(--teal); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+        .f-text { color: var(--white); font-size: 0.92rem; }
+
+        /* TIMELINE */
+        .tl { border-left: 2px solid var(--teal); padding-left: 36px; position: relative; }
+        .tl-dim { border-left: 2px solid var(--border); padding-left: 36px; position: relative; }
+        .tl-dot { position: absolute; left: -9px; top: 6px; width: 16px; height: 16px; border-radius: 50%; border: 3px solid var(--bg); }
+        .dot-on  { background: var(--teal); box-shadow: 0 0 10px rgba(0,212,170,0.4); }
+        .dot-off { background: var(--muted); }
+
+        /* CURRENT BADGE */
+        .badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(0,212,170,0.12); border: 1px solid rgba(0,212,170,0.3); color: var(--teal); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; }
+        .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); animation: blink 1.8s infinite; display: inline-block; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.25} }
+
+        /* BULLETS */
+        .blist { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+        .blist li { display: flex; gap: 12px; }
+        .barrow { color: var(--teal); flex-shrink: 0; margin-top: 3px; }
+
+        /* CERT */
+        .cert { display: flex; align-items: center; gap: 14px; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; text-decoration: none; transition: border-color 0.3s; }
+        .cert:hover { border-color: rgba(0,212,170,0.35); }
+        .cert-ico { width: 40px; height: 40px; border-radius: 10px; background: var(--teal-dim); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--teal); font-size: 1.05rem; }
+
+        /* SKILLS */
+        .pill { background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--text); padding: 8px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 500; transition: border-color 0.2s, color 0.2s; display: inline-block; }
+        .pill:hover { border-color: var(--teal); color: var(--teal); }
+
+        /* MISC */
+        .gh-link { color: var(--teal); font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+        .gh-link:hover { gap: 10px; }
+        .orb { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links, .nav-resume { display: none; }
+            #mob-btn { display: block; }
+            .two-col { grid-template-columns: 1fr !important; }
+            .stat-grid { grid-template-columns: 1fr 1fr !important; }
+            .section-title { font-size: 1.8rem; }
         }
-        .section-title {
-            @apply text-3xl font-bold mb-4 text-slate-100 relative inline-block pb-2;
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
-            border-radius: 2px;
-        }
-        .nav-link {
-            @apply text-slate-300 hover:text-sky-400 transition-colors duration-300;
-        }
-        /* Scroll animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: #1a2a3a; border-radius: 4px; }
     </style>
 </head>
-<body class="antialiased">
+<body>
 
-    <!-- Header -->
-    <header class="bg-slate-900/80 backdrop-blur-lg sticky top-0 z-50 shadow-lg shadow-black/20">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-lg font-extrabold text-white tracking-widest">
-                MOHANI<span class="text-sky-400">.</span>
+<!-- NAV -->
+<header>
+    <nav>
+        <a href="#" class="logo">M<span>.</span>Bhurtel</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="Mohani LaL Bhurtel CV.pdf" target="_blank" class="nav-resume">Resume</a>
+        <button id="mob-btn" onclick="var m=document.getElementById('mob-menu');m.style.display=m.style.display==='block'?'none':'block'">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+    </nav>
+    <div id="mob-menu">
+        <a href="#about"      onclick="document.getElementById('mob-menu').style.display='none'">About</a>
+        <a href="#projects"   onclick="document.getElementById('mob-menu').style.display='none'">Projects</a>
+        <a href="#experience" onclick="document.getElementById('mob-menu').style.display='none'">Experience</a>
+        <a href="#skills"     onclick="document.getElementById('mob-menu').style.display='none'">Skills</a>
+        <a href="#contact"    onclick="document.getElementById('mob-menu').style.display='none'">Contact</a>
+    </div>
+</header>
+
+<!-- HERO -->
+<section id="hero" style="min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;">
+    <div class="orb" style="width:500px;height:500px;background:rgba(0,212,170,0.07);top:-80px;right:-80px;"></div>
+    <div class="orb" style="width:350px;height:350px;background:rgba(56,189,248,0.05);bottom:40px;left:-60px;"></div>
+    <div class="wrap" style="position:relative;z-index:1;padding-top:80px;padding-bottom:80px;width:100%;">
+        <span class="eyebrow">Data Analyst &nbsp;·&nbsp; London, UK</span>
+        <h1 class="display" style="font-size:clamp(3.5rem,8vw,6.5rem);color:var(--white);line-height:1;margin-bottom:10px;">Mohani</h1>
+        <h1 class="display-light" style="font-size:clamp(2.8rem,6vw,5rem);color:var(--teal);line-height:1;margin-bottom:32px;">Lal Bhurtel.</h1>
+        <p style="font-size:1.15rem;max-width:560px;color:var(--text);font-weight:300;line-height:1.8;margin-bottom:36px;">
+            I care about data being <em style="font-family:Fraunces,serif;color:var(--white);">correct</em>, not just close.
+            Right now that means signing off on international flight cargo audits at
+            <strong style="color:var(--white);">dnata Catering UK</strong>.
+            Next, I want to bring that same standard to a data analyst role.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:16px;margin-bottom:72px;">
+            <a href="#projects" class="btn-p">See My Work</a>
+            <a href="Mohani LaL Bhurtel CV.pdf" target="_blank" class="btn-o">Download CV</a>
+        </div>
+
+        <!-- Stats -->
+        <div class="stat-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+            <div class="stat-card">
+                <div><span class="stat-num" id="cnt1">0</span><span class="stat-suf">+</span></div>
+                <span class="stat-label">Audit forms per shift</span>
+            </div>
+            <div class="stat-card">
+                <div><span class="stat-num" id="cnt2">0</span><span class="stat-suf">%</span></div>
+                <span class="stat-label">Data accuracy maintained</span>
+            </div>
+            <div class="stat-card">
+               <div><span class="stat-num" id="cnt4">0.00</span></div>
+                <span class="stat-label">Discount vs profit correlation</span>
+            </div>
+            <div class="stat-card">
+                <div><span class="stat-num" id="cnt3">0</span></div>
+                <span class="stat-label">Professional certifications</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about" style="padding:96px 0;">
+    <div class="wrap">
+        <div class="two-col" style="display:grid;grid-template-columns:2fr 3fr;gap:64px;align-items:start;">
+            <div>
+                <span class="eyebrow">About Me</span>
+                <h2 class="section-title">Getting things right is the whole point.</h2>
+            </div>
+            <div style="font-size:1.05rem;line-height:1.85;color:var(--text);display:flex;flex-direction:column;gap:18px;">
+                <p>I got into data because I'm obsessed with accuracy. Not roughly right, actually right.
+                That fits perfectly with my current role at <strong style="color:var(--white);">dnata Catering UK</strong>,
+                where if I record a seal number wrong or miss a discrepancy on a loading list, that flight doesn't go.
+                Working in a zero-error environment every day has sharpened how I approach any kind of data work.</p>
+                <p>Outside my day job I've built analytics projects end-to-end in SQL, Python, and Power BI,
+                digging into sales performance, customer segmentation, and marketing spend efficiency.
+                I like the moment where messy data becomes a clear answer, and I'm equally comfortable
+                writing the queries as presenting the findings to stakeholders.</p>
+                <p>I'm based in London, holding <strong style="color:var(--white);">CompTIA Data+</strong>,
+                <strong style="color:var(--white);">Google Data Analytics</strong>, and
+                <strong style="color:var(--white);">BCS Foundation in Business Analysis</strong> certifications,
+                and actively looking for a Junior Data Analyst or Data Quality role.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;padding-top:4px;">
+                    <span class="tag">SQL</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Power BI</span>
+                    <span class="tag">Data Validation</span>
+                    <span class="tag">Compliance Auditing</span>
+                    <span class="tag">Excel</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects" style="padding:96px 0;">
+    <div class="wrap">
+        <span class="eyebrow">Work I'm proud of</span>
+        <h2 class="section-title" style="margin-bottom:56px;">Featured Projects</h2>
+        <div style="display:flex;flex-direction:column;gap:24px;">
+
+            <!-- P1 -->
+            <div class="proj-card">
+                <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;">
+                    <div style="padding:36px 40px;display:flex;flex-direction:column;justify-content:space-between;">
+                        <div>
+                            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;">
+                                <span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">ETL</span>
+                            </div>
+                            <h3 class="display" style="font-size:1.5rem;color:var(--white);margin-bottom:14px;">Executive Sales &amp; Customer Dashboard</h3>
+                            <p style="color:var(--text);font-size:0.95rem;line-height:1.75;margin-bottom:20px;">
+                                Built to answer one question the business cares about: who's buying, and why?
+                                Wrote SQL to segment the customer base across demographics and spend behaviour,
+                                then built an interactive Power BI dashboard to make the answer clear.
+                            </p>
+                            <div class="finding">
+                                <p class="f-label">Key Finding</p>
+                                <p class="f-text">One age group and profession accounted for <strong>75% of total revenue</strong>. That's where the marketing budget should go.</p>
+                            </div>
+                        </div>
+                        <a href="https://github.com/M-Bhurtel/Wonderland-Sales-Analaytics" target="_blank" class="gh-link">
+                            View on GitHub <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i>
+                        </a>
+                    </div>
+                    <div class="proj-img-wrap" style="margin:16px 16px 16px 0;">
+                        <img src="Exec Summary.jpg" alt="Executive Sales Dashboard" class="proj-img">
+                    </div>
+                </div>
+            </div>
+
+            <!-- P2 -->
+            <div class="proj-card">
+                <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;">
+                    <div class="proj-img-wrap" style="margin:16px 0 16px 16px;">
+                        <img src="Dashboard_Marketing.jpg" alt="Marketing Campaign Dashboard" class="proj-img">
+                    </div>
+                    <div style="padding:36px 40px;display:flex;flex-direction:column;justify-content:space-between;">
+                        <div>
+                            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;">
+                                <span class="tag">Excel</span><span class="tag">Power Query</span><span class="tag">PivotTables</span>
+                            </div>
+                            <h3 class="display" style="font-size:1.5rem;color:var(--white);margin-bottom:14px;">Marketing Campaign Dashboard</h3>
+                            <p style="color:var(--text);font-size:0.95rem;line-height:1.75;margin-bottom:20px;">
+                                Wanted to know which campaigns were worth the money and which were quietly burning budget.
+                                Built an Excel dashboard tracking ROAS, CPA, and spend efficiency across all channels.
+                            </p>
+                            <div class="finding">
+                                <p class="f-label">Key Finding</p>
+                                <p class="f-text">One campaign running at <strong>15.0x ROAS</strong>. The dashboard made the case for budget reallocation without a long report.</p>
+                            </div>
+                        </div>
+                        <a href="https://github.com/M-Bhurtel/Marketing-Campaign-Performance-Dashboard" target="_blank" class="gh-link">
+                            View on GitHub <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- P3 -->
+            <div class="proj-card">
+                <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;">
+                    <div style="padding:36px 40px;display:flex;flex-direction:column;justify-content:space-between;">
+                        <div>
+                            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;">
+                                <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Seaborn</span>
+                            </div>
+                            <h3 class="display" style="font-size:1.5rem;color:var(--white);margin-bottom:14px;">Global Superstore Profitability EDA</h3>
+                            <p style="color:var(--text);font-size:0.95rem;line-height:1.75;margin-bottom:20px;">
+                                Started with a hunch that heavy discounting was hurting the business more than the numbers showed.
+                                Ran a full Python EDA to test it. The correlation came back stronger than expected.
+                            </p>
+                            <div class="finding">
+                                <p class="f-label">Key Finding</p>
+                                <p class="f-text"><strong>-0.51 correlation</strong> between discount level and profit. Proposed a 20% discount cap as a concrete, data-backed fix.</p>
+                            </div>
+                        </div>
+                        <a href="https://github.com/M-Bhurtel/Global-Superstore-Sales-and-Profitability-Analysis" target="_blank" class="gh-link">
+                            View on GitHub <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i>
+                        </a>
+                    </div>
+                    <div class="proj-img-wrap" style="margin:16px 16px 16px 0;">
+                        <img src="Profit vs Discount.jpg" alt="Profit vs Discount Analysis" class="proj-img">
+                    </div>
+                </div>
+            </div>
+
+            <!-- P4 -->
+             <div class="proj-card">
+                <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;">
+                    <div class="proj-img-wrap" style="margin:16px 0 16px 16px;">
+                        <img src="Dashboard 1.jpg" alt="Telco Churn Dashboard" class="proj-img">
+                    </div>
+                    <div style="padding:36px 40px;display:flex;flex-direction:column;justify-content:space-between;">
+                        <div>
+                            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;">
+                                <span class="tag">Power BI</span><span class="tag">Data Analysis</span>
+                            </div>
+                            <h3 class="display" style="font-size:1.5rem;color:var(--white);margin-bottom:14px;">Telco Customer Churn Analysis</h3>
+                            <p style="color:var(--text);font-size:0.95rem;line-height:1.75;margin-bottom:20px;">
+                                Analysed customer churn patterns in a telecommunications company using Power BI.
+                                Focused on identifying the key factors driving customers to leave so the business
+                                could act on them before it was too late.
+                            </p>
+                            <div class="finding">
+                                <p class="f-label">Goal</p>
+                                <p class="f-text">Surface the highest-risk customer segments and make the patterns visible to non-technical stakeholders.</p>
+                            </div>
+                        </div>
+                        <a href="https://github.com/M-Bhurtel/Telco-Churn-Analysis" target="_blank" class="gh-link">
+                            View on GitHub <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align:center;padding:8px 0;">
+                <a href="https://github.com/M-Bhurtel" target="_blank" class="btn-o">
+                    <i class="fab fa-github"></i> See all projects on GitHub
+                </a>
+            </div>
+ 
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="padding:96px 0;">
+    <div class="wrap">
+        <span class="eyebrow">Where I've worked</span>
+        <h2 class="section-title" style="margin-bottom:56px;">Experience</h2>
+        <div style="max-width:760px;display:flex;flex-direction:column;gap:52px;">
+
+            <!-- dnata -->
+            <div class="tl">
+                <div class="tl-dot dot-on"></div>
+                <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:6px;">
+                    <h3 class="display" style="font-size:1.6rem;color:var(--white);">General Assistant (Security & Data Auditor)</h3>
+                    <span class="badge"><span class="badge-dot"></span>Current</span>
+                </div>
+                <p style="color:var(--teal);font-weight:600;margin-bottom:4px;">dnata Catering UK Limited</p>
+                <p style="color:var(--muted);font-size:0.85rem;margin-bottom:4px;">September 2025 – Present &nbsp;·&nbsp; London, UK</p>
+                <p style="color:var(--muted);font-size:0.82rem;font-style:italic;margin-bottom:20px;">Day-to-day function: Aviation Security &amp; Compliance Auditor</p>
+                <p style="color:var(--text);line-height:1.85;margin-bottom:20px;">
+                    Responsible for the final security certification of in-flight catering supplies before they reach the aircraft.
+                    Every shift involves high-volume documentation, physical-to-record reconciliation, and sign-off under
+                    UK Department for Transport (DfT) and Civil Aviation Authority (CAA) frameworks.
+                    Errors don't get quietly corrected — they generate <strong style="color:var(--white);">Category A Failure Reports</strong>.
+                </p>
+                <ul class="blist">
+                    <li><span class="barrow">▹</span><span style="color:var(--text);">Process <strong style="color:var(--white);">40 to 50 Schedule 8.2</strong> and <strong style="color:var(--white);">7 to 10 Schedule 8.1</strong> security certification forms each shift, recording flight numbers, seal numbers, driver details, and cargo manifests with 100% accuracy.</span></li>
+                    <li><span class="barrow">▹</span><span style="color:var(--text);">Reconcile physical stock (catering trolleys, containers, canister counts) against flight loading lists. Any mismatch halts the process until the discrepancy is resolved and fully documented.</span></li>
+                    <li><span class="barrow">▹</span><span style="color:var(--text);">Conduct structured "inside-out" physical inspections on every consignment to certify no prohibited articles are present before sealing vehicles for dispatch.</span></li>
+                    <li><span class="barrow">▹</span><span style="color:var(--text);">Maintain complete, retrievable audit archives. Original security declarations go to flight crews and drivers, and every record must be traceable under regulatory audit.</span></li>
+                </ul>
+            </div>
+
+            <!-- Zither -->
+            <div class="tl-dim">
+                <div class="tl-dot dot-off"></div>
+                <h3 class="display" style="font-size:1.6rem;color:var(--white);margin-bottom:6px;">Business Analyst Intern</h3>
+                <p style="color:var(--teal);font-weight:600;margin-bottom:4px;">Zither IT Consulting</p>
+                <p style="color:var(--muted);font-size:0.85rem;margin-bottom:20px;">December 2023 – April 2024 &nbsp;·&nbsp; Sydney, Australia</p>
+                <p style="color:var(--text);line-height:1.85;margin-bottom:20px;">
+                    Supported delivery of IT system improvements through structured testing, requirements gathering,
+                    and documentation. Worked across the full bug lifecycle from identification through to resolution.
+                </p>
+                <ul class="blist">
+                    <li><span class="barrow">▹</span><span style="color:var(--text);">Identified and documented technical defects through end-to-end system testing, managing the full bug lifecycle in Asana.</span></li>
+                    <li><span class="barrow">▹</span><span style="color:var(--text);">Helped reduce issue resolution turnaround by approximately <strong style="color:var(--white);">20%</strong> through improved tracking workflows and clearer documentation practices.</span></li>
+                    <li><span class="barrow">▹</span><span style="color:var(--text);">Assisted in requirements gathering and validation with stakeholders, building experience translating business needs into technical specifications.</span></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" style="padding:96px 0;">
+    <div class="wrap">
+        <span class="eyebrow">Verified credentials</span>
+        <h2 class="section-title" style="margin-bottom:40px;">Certifications</h2>
+        <div class="cert-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+
+            <a href="https://www.credly.com/badges/af2a8453-011c-4d3c-976b-537575db5907" target="_blank" class="cert">
+                <div class="cert-ico"><i class="fas fa-shield-halved"></i></div>
+                <div style="flex:1;">
+                    <p style="color:var(--white);font-weight:600;font-size:0.9rem;">CompTIA Data+</p>
+                    <p style="color:var(--muted);font-size:0.78rem;">CompTIA &nbsp;·&nbsp; 2025</p>
+                </div>
+                <i class="fas fa-arrow-up-right-from-square" style="color:var(--muted);font-size:0.65rem;flex-shrink:0;"></i>
             </a>
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#about" class="nav-link">About</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#skills" class="nav-link">Skills</a>
+
+            <a href="https://www.coursera.org/account/accomplishments/specialization/ZBQ4O37C790M" target="_blank" class="cert">
+                <div class="cert-ico"><i class="fab fa-google"></i></div>
+                <div style="flex:1;">
+                    <p style="color:var(--white);font-weight:600;font-size:0.9rem;">Google Data Analytics</p>
+                    <p style="color:var(--muted);font-size:0.78rem;">Google &nbsp;·&nbsp; 2025</p>
+                </div>
+                <i class="fas fa-arrow-up-right-from-square" style="color:var(--muted);font-size:0.65rem;flex-shrink:0;"></i>
+            </a>
+
+            <a href="https://eprofessional.bcs.org/Portal/Candidate/Results/GetECertificate/1134878" target="_blank" class="cert">
+                <div class="cert-ico"><i class="fas fa-chart-bar"></i></div>
+                <div style="flex:1;">
+                    <p style="color:var(--white);font-weight:600;font-size:0.9rem;">BCS Foundation in Business Analysis</p>
+                    <p style="color:var(--muted);font-size:0.78rem;">BCS Chartered Institute &nbsp;·&nbsp; 2025</p>
+                </div>
+                <i class="fas fa-arrow-up-right-from-square" style="color:var(--muted);font-size:0.65rem;flex-shrink:0;"></i>
+            </a>
+
+            <a href="https://www.hackerrank.com/certificates/f67c489aacab" target="_blank" class="cert">
+                <div class="cert-ico"><i class="fas fa-database"></i></div>
+                <div style="flex:1;">
+                    <p style="color:var(--white);font-weight:600;font-size:0.9rem;">SQL (Intermediate)</p>
+                    <p style="color:var(--muted);font-size:0.78rem;">HackerRank &nbsp;·&nbsp; 2024</p>
+                </div>
+                <i class="fas fa-arrow-up-right-from-square" style="color:var(--muted);font-size:0.65rem;flex-shrink:0;"></i>
+            </a>
+
+            <a href="https://www.linkedin.com/in/mohanibhurtel/details/certifications/" target="_blank" class="cert">
+                <div class="cert-ico"><i class="fas fa-graduation-cap"></i></div>
+                <div style="flex:1;">
+                    <p style="color:var(--white);font-weight:600;font-size:0.9rem;">Data Analysis Career Programme</p>
+                    <p style="color:var(--muted);font-size:0.78rem;">ITonlinelearning &nbsp;·&nbsp; 2025</p>
+                </div>
+                <i class="fas fa-arrow-up-right-from-square" style="color:var(--muted);font-size:0.65rem;flex-shrink:0;"></i>
+            </a>
+
+            <div class="cert" style="cursor:default;">
+                <div class="cert-ico"><i class="fas fa-university"></i></div>
+                <div style="flex:1;">
+                    <p style="color:var(--white);font-weight:600;font-size:0.9rem;">BSc Business Information Systems</p>
+                    <p style="color:var(--muted);font-size:0.78rem;">Asia Pacific International College</p>
+                </div>
             </div>
-            <a href="#contact" class="hidden md:block bg-sky-500 text-white font-semibold py-2 px-5 rounded-lg hover:bg-sky-600 transition-colors">Contact Me</a>
-            <!-- Mobile Menu Button -->
-            <div class="md:hidden">
-                <button id="menu-btn" class="text-white focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                </button>
-            </div>
-        </nav>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden">
-            <a href="#about" class="block py-2 px-6 text-sm text-slate-300 hover:bg-slate-800">About</a>
-            <a href="#projects" class="block py-2 px-6 text-sm text-slate-300 hover:bg-slate-800">Projects</a>
-            <a href="#experience" class="block py-2 px-6 text-sm text-slate-300 hover:bg-slate-800">Experience</a>
-            <a href="#skills" class="block py-2 px-6 text-sm text-slate-300 hover:bg-slate-800">Skills</a>
-            <a href="#contact" class="block py-2 px-6 text-sm text-slate-300 hover:bg-slate-800">Contact</a>
+
         </div>
-    </header>
+    </div>
+</section>
 
-    <main class="container mx-auto px-6">
+<div class="divider"></div>
 
-        <!-- Hero Section -->
-        <section id="hero" class="min-h-screen flex items-center">
-            <div class="reveal">
-                <p class="text-sky-400 mb-4 text-lg">Hi, my name is</p>
-                <h1 class="text-5xl md:text-7xl font-extrabold text-slate-100 mb-4">Mohani Lal Bhurtel.</h1>
-                <h2 class="text-4xl md:text-6xl font-extrabold text-slate-400 mb-8">I turn data into insights.</h2>
-                <p class="max-w-xl text-lg text-slate-400 mb-8">
-                    I'm a Junior Data Analyst specializing in e-commerce and marketing analytics. I leverage SQL, Python, and Power BI to build dashboards and deliver data-driven recommendations that guide business strategy.
-                </p>
-                <div class="flex items-center space-x-4">
-                    <a href="Mohani Lal Data Resume.pdf" target="_blank" class="bg-transparent border-2 border-sky-400 text-sky-400 font-semibold py-3 px-8 rounded-lg hover:bg-sky-400/10 transition-colors">
-                        Download Resume
-                    </a>
+<!-- SKILLS -->
+<section id="skills" style="padding:96px 0;">
+    <div class="wrap">
+        <span class="eyebrow">Tools &amp; Technologies</span>
+        <h2 class="section-title" style="margin-bottom:48px;">Technical Skills</h2>
+        <div class="skills-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px;">
+            <div>
+                <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;">Analytics &amp; Data</p>
+                <div style="display:flex;flex-wrap:wrap;gap:10px;">
+                    <span class="pill">SQL</span>
+                    <span class="pill">Python (Pandas, NumPy)</span>
+                    <span class="pill">Power BI</span>
+                    <span class="pill">Excel &amp; Power Query</span>
+                    <span class="pill">Matplotlib &amp; Seaborn</span>
+                    <span class="pill">Tableau</span>
                 </div>
             </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="py-24">
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-12 items-start">
-                <div class="md:col-span-2 reveal">
-                    <h1 class="section-title">About Me</h1>
-                </div>
-                <div class="md:col-span-3 space-y-6 text-lg text-slate-400 reveal">
-                    <p>I am passionate about the entire data lifecycle, from cleaning and modeling complex datasets to visualizing key performance indicators and presenting my findings to stakeholders. My goal is to help companies make smarter, data-driven decisions that drive growth.</p>
-                    <p>My internship experience in an IT consulting environment honed my ability to manage projects, gather business requirements, and collaborate effectively with both technical and business teams. This, combined with my project work in sales and marketing analytics, has prepared me to deliver tangible value from day one.</p>
+            <div>
+                <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;">Core Competencies</p>
+                <div style="display:flex;flex-wrap:wrap;gap:10px;">
+                    <span class="pill">Data Validation</span>
+                    <span class="pill">Reconciliation</span>
+                    <span class="pill">Compliance Auditing</span>
+                    <span class="pill">ETL &amp; Data Cleaning</span>
+                    <span class="pill">KPI Dashboarding</span>
+                    <span class="pill">Stakeholder Reporting</span>
                 </div>
             </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="py-24">
-            <div class="reveal mb-12">
-                <h2 class="section-title">Featured Projects</h2>
-            </div>
-            <div class="space-y-16">
-                <!-- Project 1 -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center reveal">
-                    <div class="bg-slate-800/50 p-8 rounded-xl">
-                        <h3 class="text-2xl font-bold text-white mb-2">Executive Sales & Customer Dashboard</h3>
-                        <p class="text-slate-400 mb-6">Engineered an end-to-end sales dashboard using SQL and Power BI to provide insights into sales performance and customer demographics.</p>
-                        <p class="text-sky-400 font-semibold mb-2">Key Outcome:</p>
-                        <p class="text-slate-300">Identified that the 56-70 age group and Professionals were responsible for over 75% of total revenue.</p>
-                        <div class="flex items-center space-x-4 mt-6">
-                            <span class="text-xs text-slate-400">SQL</span>
-                            <span class="text-xs text-slate-400">Power BI</span>
-                            <span class="text-xs text-slate-400">ETL</span>
-                        </div>
-                    </div>
-                    <a href="https://github.com/M-Bhurtel/Wonderland-Sales-Analaytics" target="_blank" class="block group">
-                        <div class="rounded-xl overflow-hidden shadow-lg shadow-black/30">
-                            <img src="Exec Summary.jpg" alt="Executive Sales Dashboard for Wonderland" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                        </div>
-                    </a>
-                </div>
-                 <!-- Project 2 -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center reveal">
-                     <a href="https://github.com/M-Bhurtel/Marketing-Campaign-Performance-Dashboard" target="_blank" class="block group md:order-2">
-                        <div class="rounded-xl overflow-hidden shadow-lg shadow-black/30">
-                            <img src="Dashboard_Marketing.jpg" alt="Marketing Campaign Dashboard" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                        </div>
-                    </a>
-                    <div class="bg-slate-800/50 p-8 rounded-xl md:order-1 text-right">
-                        <h3 class="text-2xl font-bold text-white mb-2">Marketing Campaign Dashboard</h3>
-                        <p class="text-slate-400 mb-6">Built an interactive Excel dashboard to track marketing KPIs (ROAS, CPA) and optimize media spend across various platforms.</p>
-                         <p class="font-semibold text-sky-400 mb-2">Key Outcome:</p>
-                        <p class="text-slate-300">Pinpointed a high-performing campaign with a 15.00 ROAS, leading to a recommendation to reallocate budget for improved ROI.</p>
-                        <div class="flex items-center justify-end space-x-4 mt-6">
-                            <span class="text-xs text-slate-400">Excel</span>
-                            <span class="text-xs text-slate-400">Power Query</span>
-                            <span class="text-xs text-slate-400">PivotTables</span>
-                        </div>
-                    </div>
-                </div>
-                 <!-- Project 3 -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center reveal">
-                    <div class="bg-slate-800/50 p-8 rounded-xl">
-                        <h3 class="text-2xl font-bold text-white mb-2">Global Superstore EDA</h3>
-                        <p class="text-slate-400 mb-6">Performed an in-depth Exploratory Data Analysis on a $1.7M sales dataset using Python to identify profitability drivers.</p>
-                         <p class="font-semibold text-sky-400 mb-2">Key Outcome:</p>
-                        <p class="text-slate-300">Quantified a -0.51 correlation between discounts and profit, leading to a strategic proposal to cap discounts at 20%.</p>
-                        <div class="flex items-center space-x-4 mt-6">
-                            <span class="text-xs text-slate-400">Python</span>
-                            <span class="text-xs text-slate-400">Pandas</span>
-                             <span class="text-xs text-slate-400">Seaborn</span>
-                        </div>
-                    </div>
-                    <a href="https://github.com/M-Bhurtel/Global-Superstore-Sales-and-Profitability-Analysis" target="_blank" class="block group">
-                        <div class="rounded-xl overflow-hidden shadow-lg shadow-black/30">
-                            <img src="Profit vs Discount.jpg" alt="Profit Margin by Discount Analysis" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                        </div>
-                    </a>
+            <div>
+                <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;">Tools &amp; Environment</p>
+                <div style="display:flex;flex-wrap:wrap;gap:10px;">
+                    <span class="pill">Jupyter Notebook</span>
+                    <span class="pill">GitHub</span>
+                    <span class="pill">VS Code</span>
+                    <span class="pill">Asana</span>
                 </div>
             </div>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="experience" class="py-24">
-             <div class="reveal mb-12">
-                 <h2 class="section-title">Experience</h2>
-            </div>
-            <div class="max-w-2xl mx-auto reveal">
-                <div class="border-l-2 border-slate-700 pl-8 relative">
-                    <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-sky-400 border-4 border-slate-900"></div>
-                    <h3 class="text-2xl font-bold text-white">Business Analyst Intern</h3>
-                    <p class="text-lg text-sky-400 mb-1">Zither IT Consulting</p>
-                    <p class="text-sm text-slate-500 mb-4">Dec 2023 – Apr 2024</p>
-                    <p class="text-slate-400">
-                        Enhanced system reliability by identifying and documenting bugs through comprehensive testing. Managed the bug lifecycle using Asana, improving project transparency for stakeholders. Also assisted senior analysts in gathering and documenting business requirements for IT projects.
-                    </p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Skills Section -->
-        <section id="skills" class="py-24">
-             <div class="text-center reveal">
-                <h2 class="section-title">Technical Skills</h2>
-                <p class="text-lg text-slate-400 mb-12">A list of my key technical competencies.</p>
-            </div>
-            <div class="max-w-4xl mx-auto flex flex-wrap justify-center gap-4 text-center reveal">
-                <span class="bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg">Python</span>
-                <span class="bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg">Pandas & NumPy</span>
-                <span class="bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg">SQL</span>
-                <span class="bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg">Power BI</span>
-                <span class="bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg">Excel & Power Query</span>
-                <span class="bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg">Tableau</span>
-                <span class="bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg">Matplotlib & Seaborn</span>
-                <span class="bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg">Data Visualization</span>
-                <span class="bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg">ETL</span>
-                 <span class="bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-lg">Data Modeling</span>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-32 text-center">
-             <div class="reveal">
-                <h2 class="text-3xl text-slate-100 mb-4">What's Next?</h2>
-                <h3 class="text-5xl font-bold text-gradient mb-8">Get In Touch</h3>
-                <p class="max-w-xl mx-auto text-lg text-slate-400 mb-8">
-                    I'm currently open to new opportunities for a Data Analyst internship or junior-level role. My inbox is always open, whether you have a question or just want to say hi, I'll get back to you!
-                </p>
-                <a href="mailto:Mohanilalbhurtel07@gmail.com" class="inline-block border-2 border-sky-400 text-sky-400 font-semibold py-3 px-8 rounded-lg hover:bg-sky-400/10 transition-colors text-lg">
-                    Mohanilalbhurtel07@gmail.com
-                </a>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer with Social Links -->
-    <footer class="py-8">
-        <div class="container mx-auto px-6 text-center text-slate-400">
-            <div class="flex justify-center space-x-6 mb-4">
-                <a href="https://github.com/M-Bhurtel" target="_blank" class="text-2xl hover:text-white transition-colors">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://linkedin.com/in/mohanibhurtel" target="_blank" class="text-2xl hover:text-white transition-colors">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                 <a href="mailto:Mohanilalbhurtel07@gmail.com" class="text-2xl hover:text-white transition-colors">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </div>
-            <p class="text-sm">&copy; 2025 Mohani Lal Bhurtel. Inspired by various modern portfolio designs.</p>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <script>
-        // JS for mobile menu toggle
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
+<div class="divider"></div>
 
-        // JS for scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.15 });
+<!-- CONTACT -->
+<section id="contact" style="padding:120px 0;text-align:center;">
+    <div class="wrap">
+        <div style="max-width:600px;margin:0 auto;">
+            <span class="eyebrow">Let's talk</span>
+            <h2 class="display" style="font-size:clamp(2.4rem,5vw,3.8rem);color:var(--white);margin-bottom:24px;line-height:1.2;">Open to the right opportunity.</h2>
+            <p style="font-size:1.05rem;color:var(--text);line-height:1.85;margin-bottom:40px;">
+                I'm currently working at dnata and actively interviewing for
+                <strong style="color:var(--white);">Junior Data Analyst</strong> and
+                <strong style="color:var(--white);">Data Quality Analyst</strong> roles in London.
+                If accuracy genuinely matters in your team, I'd like to hear about it.
+            </p>
+            <a href="mailto:mohanilalbhurtel07@gmail.com" class="btn-p" style="font-size:1rem;padding:16px 36px;">
+                <i class="fas fa-envelope"></i> mohanilalbhurtel07&#64;gmail.com
+            </a>
+            <div style="display:flex;justify-content:center;gap:28px;margin-top:40px;">
+                <a href="https://linkedin.com/in/mohanibhurtel" target="_blank" style="color:var(--muted);font-size:1.5rem;text-decoration:none;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--muted)'"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/M-Bhurtel" target="_blank" style="color:var(--muted);font-size:1.5rem;text-decoration:none;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--muted)'"><i class="fab fa-github"></i></a>
+                <a href="https://www.kaggle.com/ashishbhurtel" target="_blank" style="color:var(--muted);font-size:1.5rem;text-decoration:none;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--muted)'"><i class="fab fa-kaggle"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
 
-        document.querySelectorAll('.reveal').forEach(el => {
-            observer.observe(el);
+<footer style="border-top:1px solid var(--border);padding:24px 0;">
+    <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+        <p style="color:var(--muted);font-size:0.82rem;">&copy; 2025 Mohani Lal Bhurtel</p>
+        <p style="color:var(--muted);font-size:0.82rem;">London, United Kingdom</p>
+    </div>
+</footer>
+
+<script>
+    // Counters
+    function countDecimal(id, target, ms) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        var start = null;
+        function step(ts) {
+            if (!start) start = ts;
+            var p = Math.min((ts - start) / ms, 1);
+            var val = (1 - Math.pow(1 - p, 3)) * target;
+            el.textContent = val.toFixed(2);
+            if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    }
+    function count(id, target, ms) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        var start = null;
+        function step(ts) {
+            if (!start) start = ts;
+            var p = Math.min((ts - start) / ms, 1);
+            el.textContent = Math.round((1 - Math.pow(1 - p, 3)) * target);
+            if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    }
+    window.addEventListener('load', function() {
+        count('cnt1', 50, 1200);
+        count('cnt2', 100, 1400);
+        count('cnt3', 3, 900);
+        // Decimal counter for correlation
+        var el = document.getElementById('cnt4');
+        if (el) {
+            var start = null;
+            function stepDec(ts) {
+                if (!start) start = ts;
+                var p = Math.min((ts - start) / 1300, 1);
+                var ease = 1 - Math.pow(1 - p, 3);
+                el.textContent = '-' + (ease * 0.51).toFixed(2);
+                if (p < 1) requestAnimationFrame(stepDec);
+            }
+            requestAnimationFrame(stepDec);
+        }
+    });
+    // Responsive grids
+    function resize() {
+        var w = window.innerWidth;
+        var cg = document.querySelector('.cert-grid');
+        var sg = document.querySelector('.skills-grid');
+        if (cg) cg.style.gridTemplateColumns = w < 600 ? '1fr' : w < 900 ? '1fr 1fr' : 'repeat(3,1fr)';
+        if (sg) sg.style.gridTemplateColumns = w < 768 ? '1fr' : 'repeat(3,1fr)';
+        document.querySelectorAll('.two-col').forEach(function(el) {
+            el.style.gridTemplateColumns = w < 768 ? '1fr' : '1fr 1fr';
         });
-    </script>
+    }
+    window.addEventListener('resize', resize);
+    resize();
+</script>
+
 </body>
 </html>
